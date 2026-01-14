@@ -1,18 +1,17 @@
-[build-system]
-requires = ["flit_core >=2,<4"]
-build-backend = "flit_core.buildapi"
-
-[tool.flit.metadata]
-module = "TimeTaggerRPC"
+[project]
+name = "TimeTaggerRPC"
+version = "0.1.0"
+home-page = "https://github.com/swabianinstruments/TimeTaggerRPC"
 author = "Igor Shavrin, Swabian Instruments GmbH"
 author-email = "igor@swabianinstruments.com"
-home-page = "https://github.com/swabianinstruments/TimeTaggerRPC"
 description-file = "README.md"
-requires = [
-    "Pyro5",
-    "numpy"
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    "numpy>=2.4.1",
+    "pyro5>=5.16",
+    "swabian-timetagger==2.20.2",
 ]
-requires-python = ">=3.6,<4"
 license = "BSD 3-Clause"
 classifiers=[
     "License :: OSI Approved :: BSD License",
@@ -31,10 +30,9 @@ classifiers=[
     "Intended Audience :: Science/Research",
 ]
 
-[tool.flit.metadata.urls]
-Documentation = "https://timetaggerrpc.readthedocs.io/"
-Hardware = "https://www.swabianinstruments.com/time-tagger/"
+[build-system]
+requires = ["setuptools", "build", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.flit.scripts]
+[project.scripts]
 TimeTaggerRPC-server = "TimeTaggerRPC.server:main"
-
