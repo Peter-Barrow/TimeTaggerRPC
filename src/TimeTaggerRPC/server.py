@@ -13,14 +13,25 @@ except ImportError:
 from . import helper
 
 
+# EXCLUDED_LIBRARY_MEMBERS = [
+#     'TimeTaggerBase', 'IteratorBase', 'Iterator', 'FlimAbstract',
+#     'TimeTaggerVirtual', 'createTimeTaggerVirtual',
+#     'CustomMeasurement', 'CustomMeasurementBase', 'CustomMeasurementBase_stop_all_custom_measurements',
+#     'TimeTagStream', 'FileReader', 'TimeTagStreamBuffer',
+#     'setLogger', 'setCustomBitFileName', 'hasTimeTaggerVirtualLicense',
+#     'setFrontend', 'setLanguageInfo', 'flashLicense',
+# ]
+
 EXCLUDED_LIBRARY_MEMBERS = [
     'TimeTaggerBase', 'IteratorBase', 'Iterator', 'FlimAbstract',
     'TimeTaggerVirtual', 'createTimeTaggerVirtual',
     'CustomMeasurement', 'CustomMeasurementBase', 'CustomMeasurementBase_stop_all_custom_measurements',
-    'TimeTagStream', 'FileReader', 'TimeTagStreamBuffer',
-    'setLogger', 'setCustomBitFileName', 'hasTimeTaggerVirtualLicense',
-    'setFrontend', 'setLanguageInfo', 'flashLicense',
+    'HistogramCustomBins',
+    # 'TimeTagStream', 'FileReader', 'TimeTagStreamBuffer',
+    # 'setLogger', 'setCustomBitFileName', 'hasTimeTaggerVirtualLicense',
+    # 'setFrontend', 'setLanguageInfo', 'flashLicense',
 ]
+
 
 EXCLUDED_ITERATOR_ATTRIBUTES = [
     'waitUntilFinished',
@@ -357,8 +368,8 @@ def make_timetagger_library_adapter():
         if inspect.isfunction(Cls):
             attributes[name] = make_module_function_proxy(name)
         # TODO: IteratorBase lines cause error, look into later
-        # elif issubclass(Cls, TT.IteratorBase):
-        #     attributes[name] = make_iterator_constructor(name)
+        elif issubclass(Cls, TT.IteratorBase) and not name in EXCLUDED_LIBRARY_MEMBERS:
+            attributes[name] = make_iterator_constructor(name)
         elif issubclass(Cls, TT.TimeTaggerBase):
             attributes['create'+name] = make_tagger_constructor(name)
         elif issubclass(Cls, TT.SynchronizedMeasurements):
