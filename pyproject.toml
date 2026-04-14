@@ -1,34 +1,36 @@
 [project]
 name = "TimeTaggerRPC"
 version = "0.1.0"
-home-page = "https://github.com/swabianinstruments/TimeTaggerRPC"
-author = "Igor Shavrin, Swabian Instruments GmbH"
-author-email = "igor@swabianinstruments.com"
-description-file = "README.md"
+# home-page = "https://github.com/swabianinstruments/TimeTaggerRPC"
+# author = "Igor Shavrin, Swabian Instruments GmbH"
+# author-email = "igor@swabianinstruments.com"
+# description-file = "README.md"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 dependencies = [
-    "numpy>=2.4.1",
+    "ipython>=7.34.0",
+    "matplotlib>=3.5.3",
+    "numpy",
     "pyro5>=5.16",
-    "swabian-timetagger==2.20.2",
+    # "swabian-timetagger==2.20.2",
 ]
-license = "BSD 3-Clause"
-classifiers=[
-    "License :: OSI Approved :: BSD License",
-    "Development Status :: 3 - Alpha",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    "Topic :: Scientific/Engineering",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
-]
+# license = "BSD 3-Clause"
+# classifiers=[
+#     "License :: OSI Approved :: BSD License",
+#     "Development Status :: 3 - Alpha",
+#     "Programming Language :: Python :: 3",
+#     "Programming Language :: Python :: 3.6",
+#     "Programming Language :: Python :: 3.7",
+#     "Programming Language :: Python :: 3.8",
+#     "Programming Language :: Python :: 3.9",
+#     "Programming Language :: Python :: 3.10",
+#     "Programming Language :: Python :: 3.11",
+#     "Programming Language :: Python :: 3.12",
+#     "Topic :: Software Development :: Libraries :: Python Modules",
+#     "Topic :: Scientific/Engineering",
+#     "Intended Audience :: Developers",
+#     "Intended Audience :: Science/Research",
+# ]
 
 [build-system]
 requires = ["setuptools", "build", "wheel"]
